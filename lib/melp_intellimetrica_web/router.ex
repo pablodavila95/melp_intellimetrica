@@ -5,8 +5,9 @@ defmodule MelpIntellimetricaWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", MelpIntellimetricaWeb do
+  scope "/restaurants", MelpIntellimetricaWeb do
     pipe_through :api
+    get "/statistics", StatisticsController, :restaurants
   end
 
   # Enables LiveDashboard only for development

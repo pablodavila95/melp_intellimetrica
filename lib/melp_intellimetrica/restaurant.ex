@@ -1,6 +1,5 @@
-defmodule MelpIntellimetrica.Restaurant do
+defmodule MelpIntellimetrica.Restaurants.Restaurant do
   use Ecto.Schema
-  @primary_key {:id, :string, autogenerate: false}
   import Ecto.Changeset
 
   schema "restaurants" do
@@ -17,10 +16,9 @@ defmodule MelpIntellimetrica.Restaurant do
 
   def changeset(restaurant, params \\ %{}) do
     restaurant
-    |> cast(params, [:rating, :name, :email, :phone, :city, :state, :lat, :lng])
-    |> validate_required([:rating, :name, :email, :phone, :city, :state, :lat, :lng])
+    |> cast(params, [:id, :rating, :name, :email, :phone, :city, :state, :lat, :lng])
+    |> validate_required([:id, :rating, :name, :email, :phone, :city, :state, :lat, :lng])
     |> validate_format(:email, ~r/@/)
-    |> validate_length(:rating, is: 1)
     |> validate_inclusion(:rating, 0..4)
   end
 end
