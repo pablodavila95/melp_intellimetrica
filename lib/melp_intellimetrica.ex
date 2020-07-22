@@ -75,4 +75,39 @@ defmodule MelpIntellimetrica do
       std: std_deviation_from(listing)
     }
   end
+
+  def get_restaurants_by(:state, query) do
+    result =
+      Repo.all(Restaurant)
+      |> Enum.filter(fn x -> x.state == query end)
+      |> Enum.map(fn x -> x.name end)
+
+      %{
+        restaurants: result
+      }
+  end
+
+  def get_restaurants_by(:city, query) do
+    result =
+      Repo.all(Restaurant)
+      |> Enum.filter(fn x -> x.city == query end)
+      |> Enum.map(fn x -> x.name end)
+
+      %{
+        restaurants: result
+      }
+  end
+
+  def get_restaurants_by(:rating, query) do
+    result =
+      Repo.all(Restaurant)
+      |> Enum.filter(fn x -> x.rating == query end)
+      |> Enum.map(fn x -> x.name end)
+
+      %{
+        restaurants: result
+      }
+  end
+
+
 end

@@ -4,4 +4,8 @@ defmodule MelpIntellimetricaWeb.StatisticsView do
   def render("show.json", %{statistic_data: statistic_data}) do
     statistic_data
   end
+
+  def render("index.json", %{statistic_data: statistic_data}) do
+    statistic_data
+  end
 end

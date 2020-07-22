@@ -8,9 +8,10 @@ defmodule MelpIntellimetricaWeb.Router do
   scope "/restaurants", MelpIntellimetricaWeb do
     pipe_through :api
     get "/statistics", StatisticsController, :ratings_in_area
-    get "/byState", StatisticsController, :statistics_by_state #TODO program controller
-    get "/byCity", StatisticsController, :statistics_by_city #TODO program controller
-    #TODO show count with rating x
+    get "/byState", StatisticsController, :statistics_by_state
+    get "/byCity", StatisticsController, :statistics_by_city
+    get "/byRating", StatisticsController, :statistics_by_rating
+    get "/rating", StatisticsController, :rating_statistics
   end
 
   if Mix.env() in [:dev, :test] do
