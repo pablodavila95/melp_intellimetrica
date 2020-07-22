@@ -3,7 +3,7 @@ defmodule MelpIntellimetrica do
   alias MelpIntellimetrica.Restaurants.Restaurant
 
 
-  def get_restaurants_in_radius(latitude, longitude, radius) do
+  defp get_restaurants_in_radius(latitude, longitude, radius) do
     query = [
       "SELECT * ",
       "FROM restaurants ",
@@ -28,36 +28,36 @@ defmodule MelpIntellimetrica do
 
   #TODO handle empty queries and return an empty json/with 0s
 
-  def get_listing_from(result) do
+  defp get_listing_from(result) do
     {_, listing} = result
     listing
   end
 
-  def get_list_of_ratings_from(listing) do
+  defp get_list_of_ratings_from(listing) do
     Enum.map(listing, fn x -> x.rating end)
   end
 
-  def count_restaurants_from(listing) do
+  defp count_restaurants_from(listing) do
     Enum.count(listing)
   end
 
-  def sum_of_ratings_from(listing) do
+  defp sum_of_ratings_from(listing) do
     Enum.reduce(listing, 0, fn x, acc -> x.rating + acc end)
   end
 
-  def average_rating_from(listing) when listing == [] do
+  defp average_rating_from(listing) when listing == [] do
     0.0
   end
 
-  def average_rating_from(listing) do
+  defp average_rating_from(listing) do
     sum_of_ratings_from(listing) / count_restaurants_from(listing)
   end
 
-  def std_deviation_from(listing) when listing == [] do
+  defp std_deviation_from(listing) when listing == [] do
     0.0
   end
 
-  def std_deviation_from(listing) do
+  defp std_deviation_from(listing) do
     sum_of_substractedMean_squared =
       Enum.map(get_list_of_ratings_from(listing), fn x -> :math.pow((x - average_rating_from(listing)), 2) end) |> Enum.sum()
 
