@@ -26,7 +26,7 @@ defmodule MelpIntellimetricaWeb.StatisticsController do
   end
 
   def rating_statistics(conn, _) do
-    rating_data = ""
-    render(conn, "show.json", statistic_data: rating_data)
+    statistic_data = MelpIntellimetrica.calculate_rating_statistics()
+    render(conn, "show.json", statistic_data: statistic_data)
   end
 end

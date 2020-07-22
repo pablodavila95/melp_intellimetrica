@@ -109,5 +109,34 @@ defmodule MelpIntellimetrica do
       }
   end
 
+  defp calculate_rating(rating, count) do
+    result =
+      Repo.all(Restaurant)
+      |> Enum.filter(fn x -> x.rating == rating end)
+      |> Enum.map(fn x -> x.rating end)
+    total_sum = Enum.sum(result)
+    (total_sum / count) * 100
+  end
+
+  def calculate_rating_statistics do
+    count = count_restaurants_from(Repo.all(Restaurant))
+
+    rating_0 = calculate_rating(0, count)
+    rating_1 = calculate_rating(1, count)
+    rating_2 = calculate_rating(2, count)
+    rating_3 = calculate_rating(3, count)
+    rating_4 = calculate_rating(4, count)
+    rating_5 = calculate_rating(5, count)
+
+    %{
+      zero: "#{rating_0}%",
+      one: "#{rating_1}%",
+      two: "#{rating_2}%",
+      three: "#{rating_3}%",
+      four: "#{rating_4}%",
+      five: "#{rating_5}%"
+    }
+  end
+
 
 end
