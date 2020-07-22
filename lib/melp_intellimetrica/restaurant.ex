@@ -2,6 +2,7 @@ defmodule MelpIntellimetrica.Restaurants.Restaurant do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @primary_key {:id, :string, autogenerate: false}
   schema "restaurants" do
     field(:rating, :integer)
     field(:name, :string)

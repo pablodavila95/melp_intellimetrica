@@ -2,7 +2,8 @@ defmodule MelpIntellimetrica.Repo.Migrations.CreateRestaurantsTable do
   use Ecto.Migration
 
   def change do
-    create table("restaurants") do
+    create table(:restaurants, primary_key: false) do
+      add :id, :string, primary_key: true
       add :rating, :integer
       add :name, :string
       add :site, :string
