@@ -5,9 +5,11 @@ defmodule MelpIntellimetrica do
 
   def get_restaurants_in_radius(latitude, longitude, radius) do
     query = [
-      "SELECT * FROM restaurants JOIN target ON true",
-      "WHERE ST_DWithin(geom::geography, ST_SetSRID(ST_MakePoint(#{latitude},#{longitude}),4326)::geography, #{radius});"
-    ]
+      "SELECT *",
+      "FROM restaurants",
+      "WHERE ST_DistanceSphere(ST_SetSRID(ST_MakePoint(lat, lng),4326), ST_MakePoint(#{latitude},#{longitude})) <= #{radius}"
+        ]
+    |> Enum.join(" ")
 
     args = [latitude, longitude, radius]
 
