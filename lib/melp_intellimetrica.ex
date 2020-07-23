@@ -26,8 +26,6 @@ defmodule MelpIntellimetrica do
     end
   end
 
-  #TODO handle empty queries and return an empty json/with 0s
-
   defp get_listing_from(result) do
     {_, listing} = result
     listing
@@ -121,6 +119,7 @@ defmodule MelpIntellimetrica do
   def calculate_rating_statistics do
     count = count_restaurants_from(Repo.all(Restaurant))
 
+    #In the future, a GenServer could be implemented to calculate the ratings in parallel.
     rating_0 = calculate_rating(0, count)
     rating_1 = calculate_rating(1, count)
     rating_2 = calculate_rating(2, count)
