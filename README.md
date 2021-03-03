@@ -25,3 +25,8 @@ The included Procfile automatically tells Heroku to run `mix phx.server`
   * /restaurants/rating - takes no parameters. Example: `https://intellimetrica-test-pablo.herokuapp.com/restaurants/rating`
   Returns a JSON with the percentage of restaurants with all ratings (0 - 5).
 
+  * /restaurants/create - takes the parameters to create a restaurant (can be seen in Postman).
+  Returns a created_at timestamp.
+
+  * /restaurants/delete - takes an id.
+  Deletes a restaurant by id and returns a deleted_at timestamp.
