@@ -99,7 +99,7 @@ defmodule MelpIntellimetrica do
   def get_restaurants_by(:rating, query) do
     result =
       Repo.all(Restaurant)
-      |> Enum.filter(fn x -> x.rating == query end)
+      |> Enum.filter(fn x -> x.rating == String.to_integer(query) end)
       |> Enum.map(fn x -> x.name end)
 
       %{
