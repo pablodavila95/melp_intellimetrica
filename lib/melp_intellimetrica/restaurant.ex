@@ -1,4 +1,5 @@
 defmodule MelpIntellimetrica.Restaurants.Restaurant do
+  alias MelpIntellimetrica.Repo
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -21,5 +22,14 @@ defmodule MelpIntellimetrica.Restaurants.Restaurant do
     |> validate_required([:id, :rating, :name, :email, :phone, :city, :state, :lat, :lng])
     |> validate_format(:email, ~r/@/)
     |> validate_inclusion(:rating, 0..4)
+  end
+
+  def create(%__MODULE__{} = restaurant) do
+    Repo.insert(restaurant)
+  end
+
+  def delete(id) do
+    rest = Repo.get_by(MelpIntellimetrica.Restaurants.Restaurant, %{id: id})
+    Repo.delete(rest)
   end
 end

@@ -12,6 +12,8 @@ defmodule MelpIntellimetricaWeb.Router do
     get "/byCity", StatisticsController, :statistics_by_city
     get "/byRating", StatisticsController, :statistics_by_rating
     get "/rating", StatisticsController, :rating_statistics
+    get "/create", StatisticsController, :create_restaurant
+    get "/delete", StatisticsController, :delete_restaurant
   end
 
   if Mix.env() in [:dev, :test] do
