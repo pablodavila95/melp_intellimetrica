@@ -119,7 +119,6 @@ defmodule MelpIntellimetrica do
   def calculate_rating_statistics do
     count = count_restaurants_from(Repo.all(Restaurant))
 
-    #In the future, a GenServer could be implemented to calculate the ratings in parallel.
     rating_0 = calculate_rating(0, count)
     rating_1 = calculate_rating(1, count)
     rating_2 = calculate_rating(2, count)
@@ -136,6 +135,4 @@ defmodule MelpIntellimetrica do
       five: "#{rating_5}%"
     }
   end
-
-
 end

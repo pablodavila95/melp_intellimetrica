@@ -22,6 +22,6 @@ The included Procfile automatically tells Heroku to run `mix phx.server`
   * /restaurants/byRating - takes rating in a GET request. Example: `https://intellimetrica-test-pablo.herokuapp.com/restaurants/byCity?rating=3`
   Returns a JSON containing all restaurants with a given rating.
 
-  * /restaurants/rating - takes no parameters. Example: `https://intellimetrica-test-pablo.herokuapp.com/restaurants/ratingStatistics`
+  * /restaurants/rating - takes no parameters. Example: `https://intellimetrica-test-pablo.herokuapp.com/restaurants/rating`
   Returns a JSON with the percentage of restaurants with all ratings (0 - 5).
 
